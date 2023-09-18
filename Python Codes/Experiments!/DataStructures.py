@@ -20,6 +20,7 @@ key=(1,2,3) #making a tuple of keys to set up dictionary
 
 """ We will try the following: """
 
+''' string to list: list(string)'''
 '''
 list to tuple ✓
 list to dict ✓
