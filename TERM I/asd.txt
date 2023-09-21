@@ -1,3 +1,0 @@
-line1 \n
-\n
-line3
