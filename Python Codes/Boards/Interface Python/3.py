@@ -12,7 +12,7 @@ def mysql():
     for i in cursor.fetchall():
         print(i)
     print("No.of rows: ",cursor.rowcount)
-    cursor.close()
+    cursor.close()>
     mycon.commit()
     mycon.close()  
 mysql()
