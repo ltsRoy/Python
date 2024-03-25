@@ -1,0 +1,197 @@
+SELECT P_Name FROM Product WHERE Qty>50 AND Price<500;
+SELECT DISTINCT CLASS FROM Student
+ALTER-DDL
+UPDATE_DML
+
+LIKE "S_t%"
+
+
+ALTER: (contains names)
+ALTER TABLE <table name> ADD column_name char(20)
+ALTER TABLE table_name DROP COLUMN column_name
+ALTER TABLE tableName CHANGE oldcolname newcolname datatype(length);
+ALTER TABLE table_name RENAME COLUMN old_col_name TO new_col_name;
+ALTER TABLE Persons DROP CONSTRAINT UC_Person;
+ALTER TABLE Orders DROP FOREIGN KEY FK_PersonOrder;
+ALTER TABLE Persons DROP CHECK CHK_PersonAge;
+
+
+UPDATE: (no names)
+
+DROP: (contains names)
+but.... can omit  The word COLUMN is optional and can be omitted, except for RENAME COLUMN (to distinguish a column-renaming operation from the RENAME table-renaming operation).
+
+
+
+
+DELETE: (no names)
+
+INSERT: (no names)
+
+MODIFY: (contains names)
+
+SET: (no names)
+
+SELECT: (no names)
+
+ADD: (no names)
+
+WHERE: ROW operation (select,update,delete) -> UPPER LOWER ; NO AGGREGATE FUNCS
+
+HAVING: COLUMN operation (select) ->SUM COUNT ; CAN AGGREGATE FUNCS
+
+arithmetic,boolean,between,comparison: operators
+
+
+
+
+
+SELECT * FROM Stu WHERE NOT Games="Football"
+
+SELECT * FROM Stu ORDER BY SALARY DESC;
+
+ALTER TABLE Prepaid DROP COLUMN Model;
+
+DELETE FROM Prepaid WHERE Connection='BSNL';
+
+SELECT * FROM PRODUCT WHERE PRICE BETWEEN 50 AND 100;
+
+SELECT Clientname,city,productname,price from CLIENT,PRODUCT WHERE CLIENT.P_ID=PRODUCT.P_ID;
+
+SELECT *, PRICE + 100 AS UPDATED_PRICE FROM PRODUCT;
+
+UPDATE PRODUCT SET PRICE = PRICE + 10;
+
+SELECT GCODE,DESCRIPTION FROM GARMENT ORDER BY GCODE DESC;
+
+SELECT * FROM GARMENT WHERE READYDATE BETWEEN '08-DEC-07' AND '16-JUN-08'; (based on given format)
+
+SELECT * FROM GARMENT WHERE READYDATE BETWEEN '2007-12-08' AND '2008-06-16'; (based on given format)
+
+SELECT AVG(PRICE) as AveragePrice From GARMENT WHERE FCODE='F03';
+
+SELECT FCODE,MAX(Price),MIN(Price) FROM GARMENT GROUP BY FCODE; 
+
+SELECT DESCRIPTION,PRICE FROM GARMENT WHERE GARMENT.FCODE=FABRIC.FCODE AND TYPE='SILK';
+
+SELECT G.DESCRIPTION, G.PRICE 
+FROM GARMENT G
+JOIN FABRIC F ON G.FCODE = F.FCODE
+WHERE F.TYPE = 'SILK';
+
+SELECT G.DESCRIPTION, G.PRICE 
+FROM GARMENT G
+JOIN FABRIC F ON G.FCODE = F.FCODE
+WHERE TYPE = 'SILK';
+
+SELECT NAME,BASIC,DEPARTMENT,BASIC*12 AS Annual Salary FROM EMPLOYEE;
+
+SELECT NAME, BASIC, DEPARTMENT, BASIC * 12 "Annual Salary"  FROM EMPLOYEE;
+
+INSERT INTO EMPLOYEE VALUES("VIJAY",9300,'FINANCE','13/7/98',35,"M"); 
+
+SELECT COUNT(*) "TOTEMP" FROM EMPLOYEE WHERE DEPARTMENT='PERSONNEL' OR DEPARTMENT='COMPUTER'; 
+
+SELECT NAME,INCOME FROM FAMILY ORDER BY INCOME ASC;
+
+SELECT COUNT(Name) FROM FAMILY WHERE Income<10000;
+
+ If the Name column contains integer numbers, the COUNT(Name) function will count the number of non-null integer values in the Name column, not the sum of those numbers. If the Name column contains integer numbers, the COUNT(Name) function will count the number of non-null integer values in the Name column, not the sum of those numbers.
+
+ALTER TABLE SPORTS ADD COLUMN MARKS INT CHECK (MARKS <= 25);
+
+UPDATE SPORTS SET Marks=200 WHERE GRADE IN ('A',"B") AND GRADE1 IN ('A','B');
+
+
+
+
+
+
+\\\\\\\\\\\\\\\\\\\\\\\\\
+
+
+
+SELECT 
+    JOB_ID,
+    SUM(Salary) AS TOTAL,
+    MAX(Salary) AS MAX,
+    MIN(Salary) AS MIN,
+    AVG(Salary) AS AVERAGE 
+FROM 
+    EMPLOYEE 
+WHERE 
+    DEPT_ID = 90 
+GROUP BY 
+    JOB_ID;
+
+
+Using LIKE in Row Data:
+sql
+Copy code
+SELECT * FROM employees
+WHERE first_name LIKE 'J%';
+In this example, the query will select all rows from the employees table where the first_name column starts with the letter 'J'.
+
+Using LIKE in Column Names:
+You cannot use the LIKE operator to match column names in SQL. Column names are static and must be specified directly in the SQL query. Here's an example of what you cannot do:
+
+sql
+Copy code
+SELECT * FROM employees
+WHERE column_name LIKE 'first%';
+
+
+
+
+DATA:
+
+
+In SQL, a column can have the same name as the table, but it's generally not recommended because it can cause confusion and make the SQL queries less readable and more error-prone.
+
+If a column has the same name as the table, you will need to use table aliases to distinguish between the table and the column.
+
+Here's an example:
+
+Suppose you have a table named EMPLOYEE and it has a column named EMPLOYEE.
+
+You can use the table alias to reference the column:
+
+sql
+Copy code
+SELECT EMPLOYEE.EMPLOYEE 
+FROM EMPLOYEE;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+The use of brackets ( ) and the IN operator serve different purposes in SQL, but in the context of your UPDATE statement, they can achieve the same result.
+
+Here's a comparison to clarify:
+
+Using Brackets ( ):
+sql
+Copy code
+UPDATE SPORTS 
+SET Marks = 200 
+WHERE (GRADE1 = 'A' OR GRADE1 = 'B') 
+AND (GRADE = 'A' OR GRADE = 'B');
+Using IN:
+sql
+Copy code
+UPDATE SPORTS 
+SET Marks = 200 
+WHERE GRADE1 IN ('A', 'B') 
+AND GRADE IN ('A', 'B');
+Both of these UPDATE statements will produce the same result and update the Marks column for the same set of rows.
