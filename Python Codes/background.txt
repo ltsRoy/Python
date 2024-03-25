@@ -1,0 +1,34 @@
+"background.enabled": true,
+    "background.loop": false,
+    "background.useDefault": false,
+    "background.useFront": false,
+    "background.style": {
+          "content": "''",
+          "pointer-events": "none",
+          "position": "absolute",
+          "z-index": "99999",
+          "width": "100%",
+          "height": "100%",
+          "background-size": "cover",
+          "background-repeat": "no-repeat",
+          "opacity": 0.1
+      },
+    "background.customImages": [
+          "https://cdn.audleytravel.com/-/-/79/1016845-leh-monastry-ladakh-india.jpg",  //REPLACE THIS
+      ]
+
+
+    {
+    "CodeGPT.apiKey": "CodeGPT Plus Beta",
+    "glassit.alpha": 150
+
+
+
+    "background.fullscreen": {
+      "images": ["https://cdn.audleytravel.com/-/-/79/1016845-leh-monastry-ladakh-india.jpg"], // urls of your images
+      "opacity": 0.91, // 0.85 ~ 0.95 recommended
+      "size": "cover", // also css, `cover` to self-adaption (recommended)，or `contain`、`200px 200px`
+      "position": "center", // alias to `background-position`, default `center`
+      "interval": 0 // seconds of interval for carousel, default `0` to disabled.
+    }
+}
